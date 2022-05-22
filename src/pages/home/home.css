@@ -1,0 +1,27 @@
+.home {
+    width: 85%;
+    margin: auto;
+}
+  
+.homeWidgets {
+  display: flex;
+  margin: 20px;
+}
+
+a.moreEmpl {
+  font-size: 1.2em;
+  color: black;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: -24px;
+}
+a.moreMaterial {
+  font-size: 1.2em;
+  color: black;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: -24px;
+}
+th.widgetLgTh {
+  font-size: 1.1em;
+}

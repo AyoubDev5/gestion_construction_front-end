@@ -1,0 +1,61 @@
+.userList {
+  flex: 4;
+}
+.addIconNewUserButton {
+  width: 45px;
+  height: 42px;
+  border: none;
+  background-color: darkblue;
+  color: white;
+  /* padding: 7px 10px; */
+  font-weight: 600;
+  border-radius: 50%;
+  margin: 9px;
+  cursor: pointer;
+  font-size: 1.6em;
+}
+.userListUser {
+  display: flex;
+  align-items: center;
+}
+.name {
+  color: black;
+  text-decoration: none;
+}
+.email{
+  color: black;
+  text-decoration: none;
+}
+.sms{
+  color: black;
+  text-decoration: none;
+}
+.userListImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+img.userListImg {
+  margin-top: 10px;
+}
+
+.userListEdit {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #3bb077;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.userListDelete {
+  color: red;
+  cursor: pointer;
+}
+
+svg.MuiSvgIcon-root.userListDelete {
+  font-size: 2em;
+}

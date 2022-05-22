@@ -1,0 +1,46 @@
+button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  font-size: 1.5em;
+  color: black;
+  height: 16px;
+  margin-left: 4em;
+}
+/* .card-grid {
+  padding: 30px;
+  width: 24%;
+} */
+.tache {
+  display: flex;
+  margin-top: 10px;
+}
+.card-footer {
+  display: flex;
+  margin: inherit;
+  justify-content: space-between;
+}
+button.btn.waves-effect.waves-light {
+  border: none;
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+.ui.cards {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+.cardtache{
+  margin-bottom: 5px;
+}
+.newProjetTitle{
+  font-size: 28px;
+  color: rgb(56, 136, 150);
+  text-align: end;
+  position: relative;
+  top: 33px;
+}
+.formtache{
+  margin-right: 10px;
+}
+.newProjetButton{
+  position: relative;
+  right: 13px;
+}

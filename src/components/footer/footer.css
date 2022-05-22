@@ -1,0 +1,37 @@
+.button {
+    display: flex;
+    height: 50px;
+    padding: 0;
+    background: rgb(187, 186, 186);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: "Quicksand", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background: rgb(128, 125, 125);
+  }
+  
+  .button:active {
+    background: rgb(187, 186, 186);
+  }
+  
+  .button__text,
+  .button__icon {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 15px;
+    color: #fff;
+    height: 100%;
+  }
+  
+  .button__icon {
+    font-size: 1em;
+    background: rgba(0, 0, 0, 0.08);
+  }
+  
