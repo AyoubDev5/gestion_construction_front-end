@@ -9,6 +9,7 @@ import { URL_NODE_API } from "../../Constant";
 import { MoreVert } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import "./home.css";
+import ChartEmp from "../../components/chart/ChartEmp";
 
 export default class Home extends Component {
   constructor(props) {
@@ -92,7 +93,7 @@ export default class Home extends Component {
           <div className="featuredItem">
             <span className="featuredTitle">سعر المهمة</span>
             <div className="featuredMoneyContainer">
-              <span className="featuredMoney"> {this.state.prix} MAD</span>
+              <span className="featuredMoney"> {this.state.prix || 0} MAD</span>
               <span className="featuredMoneyRate">
                 {/* -11.4 <ArrowDownward className="featuredIcon negative" /> */}
               </span>
@@ -101,7 +102,7 @@ export default class Home extends Component {
           <div className="featuredItem">
             <span className="featuredTitle">سعر المواد</span>
             <div className="featuredMoneyContainer">
-              <span className="featuredMoney"> {this.state.sal} MAD</span>
+              <span className="featuredMoney"> {this.state.sal || 0} MAD</span>
               <span className="featuredMoneyRate">
                 {/* -1.4 <ArrowDownward className="featuredIcon negative" /> */}
               </span>
@@ -110,7 +111,7 @@ export default class Home extends Component {
           <div className="featuredItem">
             <span className="featuredTitle"> رواتب الموظفين</span>
             <div className="featuredMoneyContainer">
-              <span className="featuredMoney"> {this.state.salEmpl} MAD</span>
+              <span className="featuredMoney"> {this.state.salEmpl || 0} MAD</span>
               <span className="featuredMoneyRate">
                 {/* {this.state.salEmpl < 0 ? (
                   <ArrowDownward className="featuredIcon negative" />
@@ -125,7 +126,8 @@ export default class Home extends Component {
           </div>
         </div>
 
-        <Chart data={""} title="User Analytics" grid dataKey="Active User" />
+        <Chart />
+        <ChartEmp/>
 
         <div className="homeWidgets">
           <div className="widgetSm">
@@ -157,8 +159,8 @@ export default class Home extends Component {
             </h3>
             <table className="widgetLgTable">
               <tr className="widgetLgTr">
-                <th className="widgetLgTh">المدة</th>
                 <th className="widgetLgTh">الراتب</th>
+                <th className="widgetLgTh">المدة</th>
                 <th className="widgetLgTh">االعمال</th>
               </tr>
               {this.state.empls.map((empl) => (

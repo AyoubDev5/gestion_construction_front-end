@@ -1,24 +1,71 @@
-const { app, BrowserWindow } = require("electron");
-require("@electron/remote/main").initialize();
-const path = require("path");
+const electron = require('electron');
+// Module to control application life.
+const app = electron.app;
+// Module to create native browser window.
+const BrowserWindow = electron.BrowserWindow;
+
+const path = require('path');
+const url = require('url');
+
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
+let mainWindow;
 
 function createWindow() {
-  mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 650,
-    webPreferences: {
-      nodeIntegration: true,
-      enableRemoteModule: true,
-      devTools: false,
-    },
-  });
-  const deployURL = "https://illustrious-dolphin-04aa26.netlify.app/";
-  mainWindow.setMenu(null);
-  mainWindow.loadURL(deployURL);
+    // Create the browser window.
+    mainWindow = new BrowserWindow({width: 800, height: 600, minWidth:1000});
 
-  mainWindow.once("ready-to-show", () => mainWindow.show());
-  mainWindow.on("closed", () => {
-    mainWindow = null;
-  });
+    mainWindow.setMenu(null);
+
+    // and load the index.html of the app.
+    mainWindow.loadURL('https://6291f8673a5cbe646b01406b--gestion-construction.netlify.app');
+
+    // Open the DevTools.
+    mainWindow.webContents.openDevTools();
+
+    // Emitted when the window is closed.
+    mainWindow.on('closed', function () {
+        // Dereference the window object, usually you would store windows
+        // in an array if your app supports multi windows, this is the time
+        // when you should delete the corresponding element.
+        mainWindow = null
+    })
+
+    // mainWindow.webContents.session.webRequest.onBeforeSendHeaders(
+    //     (details, callback) => {
+    //       callback({ requestHeaders: { Origin: '*', ...details.requestHeaders } });
+    //     },
+    //   );
+    
+    //   mainWindow.webContents.session.webRequest.onHeadersReceived((details, callback) => {
+    //     callback({
+    //       responseHeaders: {
+    //         'Access-Control-Allow-Origin': ['*'],
+    //         ...details.responseHeaders,
+    //       },
+    //     });
+    //   });
 }
-app.on("ready", createWindow);
+
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Some APIs can only be used after this event occurs.
+app.on('ready', createWindow);
+
+// Quit when all windows are closed.
+app.on('window-all-closed', function () {
+    // On OS X it is common for applications and their menu bar
+    // to stay active until the user quits explicitly with Cmd + Q
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
+});
+
+app.on('activate', function () {
+    // On OS X it's common to re-create a window in the app when the
+    // dock icon is clicked and there are no other windows open.
+    if (mainWindow === null) {
+        createWindow()
+    }
+});
+

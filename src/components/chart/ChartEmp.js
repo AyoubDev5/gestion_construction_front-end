@@ -6,11 +6,13 @@ import {
   BarElement,
   CategoryScale, 
   BarController,
-  LinearScale
+  LinearScale,
+  PointElement,
+  LineElement,
 
 } from 'chart.js';
 
-import { Bar } from 'react-chartjs-2';
+import { Line  } from 'react-chartjs-2';
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -19,9 +21,11 @@ ChartJS.register(
   CategoryScale,
   BarController, 
   LinearScale,
+  PointElement,
+  LineElement,
 );
 
-export default function Chart(props) {
+export default function ChartEmp(props) {
 
   const URL_NODE_API = "https://node-server-construction.herokuapp.com";
   const [rowData, setRowData] = useState([]);
@@ -30,38 +34,28 @@ export default function Chart(props) {
   const {idTache}=useParams();
 
   useEffect(() => {
-    var apiurl = URL_NODE_API + `/materiels/${idTache}`;
+    var apiurl = URL_NODE_API + `/empls/${idTache}`;
     axios
       .get(apiurl)
       .then((response) => {
       
-          // console.log("chart", response);
+          // console.log("chartemp", response);
           setChart(response)
       })
   }, []);
   
+  const labels= chart?.data?.map(x=>x.lname+" "+x.fname);
   var data = {
-    labels: chart?.data?.map(x=>x.type_materiel),
+    labels,
     datasets: [{
-      label: `Type des Materiels avec le Prix`,
-      data: chart?.data?.map(x=>x.prix_unitaire * x.quantite),
+      label: `Les employees avec salaires`,
+      data: chart?.data?.map(x=>x.price),
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
       ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ],
-      borderWidth: 1
+      fill: false,
+      borderColor: 'rgb(75, 192, 192)',
+      borderWidth: 4
     }]
   };
   
@@ -80,7 +74,7 @@ export default function Chart(props) {
 
   return (
     <div className="chart">
-      <Bar
+      <Line 
         data={data}
         height={400}
         options={options}
