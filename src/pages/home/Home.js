@@ -130,7 +130,7 @@ export default class Home extends Component {
         <ChartEmp/>
 
         <div className="homeWidgets">
-          <div className="widgetSm">
+          <div className="widgetSm"  style={{overflowY: "scroll",height: "250px"}}>
             <span className="widgetSmTitle">
               قائمة المواد
               <Link
@@ -147,7 +147,7 @@ export default class Home extends Component {
             </ul>
           </div>
 
-          <div className="widgetLg">
+          <div className="widgetLg" style={{overflowY: "scroll",height: "250px"}}>
             <h3 className="widgetLgTitle">
               قائمة االعمال
               <Link

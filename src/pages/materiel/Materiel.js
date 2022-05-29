@@ -1,9 +1,26 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Chart from "../../components/chart/Chart";
 import "./materiel.css";
 import { URL_SPRING_API } from "../../Constant";
+import {
+  Chart as ChartJS,
+
+  BarElement,
+  CategoryScale, 
+  BarController,
+  LinearScale
+
+} from 'chart.js';
+
+import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(
+  BarElement,
+  CategoryScale,
+  BarController, 
+  LinearScale,
+);
 
 export default class product extends Component {
   constructor(props) {
@@ -13,7 +30,7 @@ export default class product extends Component {
       materiels: [],
       idMateriel: 1,
       type_materiel: "",
-      prix_unitaire: 0,
+      prix_unitaire: "",
       quantite: "",
       productData: [
         {
@@ -71,6 +88,31 @@ export default class product extends Component {
   render() {
     const { idMateriel, type_materiel, quantite, prix_unitaire } =
       this.state.materiel;
+      // console.log("materiel:res.data",  this.state.materiel);
+      
+  var data = {
+    labels:  this.state.materiel.type_materiel,
+    datasets: [{
+      label: `Type des Materiels avec le Prix`,
+      data:  [this.state.materiel.prix_unitaire] ,
+      backgroundColor: [
+        'rgba(54, 162, 235, 0.2)',
+      ],
+      fill: false,
+      borderColor: 'rgb(75, 192, 192)',
+      borderWidth: 1
+    }]
+  };
+  var options = {
+    maintainAspectRatio: false,
+    scales: {
+    },
+    legend: {
+      labels: {
+        fontSize: 25,
+      },
+    },
+  }
     return (
       <div className="product">
         <div className="productTitleContainer">
@@ -83,10 +125,11 @@ export default class product extends Component {
         </div>
         <div className="productTop">
           <div className="productTopLeft">
-            <Chart
-              data={this.state.productData}
-              dataKey="Sales"
-              title="Sales Performance"
+            <Bar
+              data={data}
+              height={250}
+              width={100}
+              options={options}
             />
           </div>
           <div className="productTopRight">

@@ -18,7 +18,7 @@ function createWindow() {
     mainWindow.setMenu(null);
 
     // and load the index.html of the app.
-    mainWindow.loadURL('https://6291f8673a5cbe646b01406b--gestion-construction.netlify.app');
+    mainWindow.loadURL('https://629369fb6a676d3f8ac7b2d6--gestion-construction.netlify.app');
 
     // Open the DevTools.
     mainWindow.webContents.openDevTools();
